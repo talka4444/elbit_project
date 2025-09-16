@@ -1,0 +1,7 @@
+<form (submit)="addGuest()">
+  <input [(ngModel)]="newGuest.name" name="name" placeholder="Name" />
+  <input [(ngModel)]="newGuest.title" name="title" placeholder="Title" />
+  <input [(ngModel)]="newGuest.description" name="description" placeholder="Description" />
+  <input [(ngModel)]="newGuest.rating" name="rating" type="number" placeholder="Rating" />
+  <button type="submit">Add Guest</button>
+</form>

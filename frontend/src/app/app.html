@@ -1,0 +1,3 @@
+<button (click)="toggleCreateGuest()">Create New Guest</button>
+<app-create-guest *ngIf="isCreateGuestOpen" (guestCreated)="toggleCreateGuest()"></app-create-guest>
+<app-guests-information></app-guests-information>

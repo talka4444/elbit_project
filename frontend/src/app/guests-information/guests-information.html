@@ -1,0 +1,30 @@
+<h2>Guests</h2>
+
+<table class="guest-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Title</th>
+      <th>Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let guest of guests" (click)="openModal(guest.id)">
+      <td>{{ guest.name }}</td>
+      <td>{{ guest.title }}</td>
+      <td>{{ guest.rating }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="modal" *ngIf="showModal">
+  <div class="modal-content">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h3>Guest Details</h3>
+    <p><strong>ID:</strong> {{ selectedGuest?.id }}</p>
+    <p><strong>Name:</strong> {{ selectedGuest?.name }}</p>
+    <p><strong>Title:</strong> {{ selectedGuest?.title }}</p>
+    <p><strong>Description:</strong> {{ selectedGuest?.description }}</p>
+    <p><strong>Rating:</strong> {{ selectedGuest?.rating }}</p>
+  </div>
+</div>

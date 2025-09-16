@@ -1,4 +1,4 @@
-from fastapi import Depends
+from fastapi import Depends, HTTPException, status
 from app import create_app
 from models.guest import Guest, GuestModel
 from database import Base, engine, get_session
@@ -21,4 +21,7 @@ def get_all_guests(session: Session = Depends(get_session)):
 
 @app.get("/guest/{guest_id}")
 def get_guest_by_id(guest_id: int, session: Session = Depends(get_session)):
-    return session.query(Guest).filter(Guest.id == guest_id).first()
+    guest = session.query(Guest).filter(Guest.id == guest_id).first()
+    if not guest:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="guestId not found")
+    return guest
